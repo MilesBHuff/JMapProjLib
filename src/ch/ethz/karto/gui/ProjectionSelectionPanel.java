@@ -32,6 +32,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.jhlabs.map.Ellipsoid;
+import com.jhlabs.map.proj.AzimuthalProjection;
 import com.jhlabs.map.proj.Projection;
 import com.jhlabs.map.proj.ProjectionFactory;
 
@@ -43,6 +44,8 @@ import com.jhlabs.map.proj.ProjectionFactory;
  * @author Bernhard Jenny, Institute of Cartography, ETH Zurich.
  */
 public class ProjectionSelectionPanel extends JPanel {
+
+    private Projection projection = null;
 
     /**
      * The lines that are displayed. Must be in geographic coordinates
@@ -73,6 +76,8 @@ public class ProjectionSelectionPanel extends JPanel {
 
         Object[] projNames = ProjectionFactory.getOrderedProjectionNames();
         projectionComboBox.setModel(new DefaultComboBoxModel(projNames));
+
+        updateControls();
     }
 
     private void project() {
@@ -81,7 +86,7 @@ public class ProjectionSelectionPanel extends JPanel {
         try {
             // find the selected name, create the corresponding projection.
             String projName = (String) projectionComboBox.getSelectedItem();
-            Projection projection = ProjectionFactory.getNamedProjection(projName);
+            projection = ProjectionFactory.getNamedProjection(projName);
 
             // use the selected projection to project the lines,
             // and pass the projected lines to the map to display.
@@ -105,7 +110,7 @@ public class ProjectionSelectionPanel extends JPanel {
             }
 
             // write some descriptive information about the selected projection.
-            updateProjectionInfo(projection);
+            updateProjectionInfo();
 
         } catch (Exception exc) {
             String msg = exc.getMessage();
@@ -130,15 +135,14 @@ public class ProjectionSelectionPanel extends JPanel {
         // reset the graphical user interface to the first projection.
         projectionComboBox.setSelectedIndex(0);
         project();
+        updateControls();
     }
 
     /**
      * Write basic information about the projection to the graphical user
      * interface.
-     *
-     * @projection The Projection that provides the information.
      */
-    private void updateProjectionInfo(Projection projection) {
+    private void updateProjectionInfo() {
         if (projection == null) {
             descriptionLabel.setText("-");
         } else {
@@ -329,6 +333,7 @@ public class ProjectionSelectionPanel extends JPanel {
     private void projectionComboBoxItemStateChanged(ItemEvent evt) {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             project();
+            updateControls();
         }
     }
 
@@ -350,6 +355,19 @@ public class ProjectionSelectionPanel extends JPanel {
             projectionComboBox.setSelectedIndex(id);
             project();
         }
+    }
+
+    private void updateControls() {
+        if (projection == null) {
+            return;
+        }
+        boolean showLatControls = false;
+        if (projection instanceof AzimuthalProjection) {
+            showLatControls = true;
+        }
+        latitudeLeadLabel.setVisible(showLatControls);
+        lat0Slider.setVisible(showLatControls);
+        lat0Label.setVisible(showLatControls);
     }
 
 }
