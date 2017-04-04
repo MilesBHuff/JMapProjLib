@@ -50,18 +50,18 @@ public class ProjectionSelectionPanel extends JPanel {
      */
     private ArrayList<MapLine> lines = null;
 
-    private JLabel descriptionLabel;
-    private JPanel infoPanel;
-    private JCheckBox inverseCheckBox;
-    private JLabel lon0Label;
-    private JSlider lon0Slider;
-    private JLabel lat0Label;
-    private JSlider lat0Slider;
-    private MapComponent map;
-    private JButton nextProjectionButton;
-    private JButton previousProjectionButton;
-    private JComboBox projectionComboBox;
-    private JPanel selectionPanel;
+    private JLabel descriptionLabel = new JLabel();
+    private JPanel infoPanel = new JPanel();
+    private JCheckBox inverseCheckBox = new JCheckBox();
+    private JLabel lon0Label = new JLabel("0");
+    private JSlider lon0Slider = new JSlider();
+    private JLabel lat0Label = new JLabel("0");
+    private JSlider lat0Slider = new JSlider();
+    private MapComponent map = new MapComponent();
+    private JButton nextProjectionButton = new JButton(">");
+    private JButton previousProjectionButton = new JButton("<");
+    private JComboBox projectionComboBox = new JComboBox();
+    private JPanel selectionPanel = new JPanel();
 
     /**
      * Creates new form ProjectionSelectionPanel
@@ -148,21 +148,6 @@ public class ProjectionSelectionPanel extends JPanel {
      * This method is called from within the constructor to initialize the form.
      */
     private void initComponents() {
-        selectionPanel = new JPanel();
-        projectionComboBox = new JComboBox();
-        previousProjectionButton = new JButton();
-        nextProjectionButton = new JButton();
-        inverseCheckBox = new JCheckBox();
-        map = new MapComponent();
-        infoPanel = new JPanel();
-        JLabel descriptionLeadLabel = new JLabel();
-        descriptionLabel = new JLabel();
-        JLabel longitudeLeadLabel = new JLabel();
-        JLabel latitudeLeadLabel = new JLabel();
-        lon0Slider = new JSlider();
-        lon0Label = new JLabel();
-        lat0Slider = new JSlider();
-        lat0Label = new JLabel();
 
         setLayout(new BorderLayout(10, 10));
 
@@ -181,7 +166,6 @@ public class ProjectionSelectionPanel extends JPanel {
         });
         selectionPanel.add(projectionComboBox);
 
-        previousProjectionButton.setText("<");
         previousProjectionButton.setPreferredSize(new Dimension(50, 29));
         previousProjectionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -190,7 +174,6 @@ public class ProjectionSelectionPanel extends JPanel {
         });
         selectionPanel.add(previousProjectionButton);
 
-        nextProjectionButton.setText(">");
         nextProjectionButton.setPreferredSize(new Dimension(50, 29));
         nextProjectionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -232,7 +215,7 @@ public class ProjectionSelectionPanel extends JPanel {
 
         constraints.gridy = 0;
 
-        descriptionLeadLabel.setText("Description");
+        JLabel descriptionLeadLabel = new JLabel("Description");
         constraints.anchor = GridBagConstraints.EAST;
         infoPanel.add(descriptionLeadLabel, constraints);
 
@@ -251,7 +234,7 @@ public class ProjectionSelectionPanel extends JPanel {
 
         constraints.gridy = 1;
 
-        longitudeLeadLabel.setText("Longitude of Origin");
+        JLabel longitudeLeadLabel = new JLabel("Longitude of Origin");
         constraints.gridx = 0;
         infoPanel.add(longitudeLeadLabel, constraints);
 
@@ -271,7 +254,6 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.insets = new Insets(2, 10, 2, 0);
         infoPanel.add(lon0Slider, constraints);
 
-        lon0Label.setText("0");
         lon0Label.setMaximumSize(new Dimension(50, 16));
         lon0Label.setMinimumSize(new Dimension(50, 16));
         lon0Label.setPreferredSize(new Dimension(50, 16));
@@ -284,7 +266,7 @@ public class ProjectionSelectionPanel extends JPanel {
 
         constraints.gridy = 2;
 
-        latitudeLeadLabel.setText("Latitude of Origin");
+        JLabel latitudeLeadLabel = new JLabel("Latitude of Origin");
         constraints.gridx = 0;
         infoPanel.add(latitudeLeadLabel, constraints);
 
@@ -304,7 +286,6 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.insets = new Insets(2, 10, 2, 0);
         infoPanel.add(lat0Slider, constraints);
 
-        lat0Label.setText("0");
         lat0Label.setMaximumSize(new Dimension(50, 16));
         lat0Label.setMinimumSize(new Dimension(50, 16));
         lat0Label.setPreferredSize(new Dimension(50, 16));
