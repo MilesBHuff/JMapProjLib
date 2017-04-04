@@ -237,6 +237,7 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.gridy = 1;
 
         constraints.gridx = 0;
+        constraints.weightx = 0;
         infoPanel.add(longitudeLeadLabel, constraints);
 
         setValues(lon0Slider, 180, -180, 0);
@@ -247,6 +248,7 @@ public class ProjectionSelectionPanel extends JPanel {
             }
         });
         constraints.gridx = 1;
+        constraints.weightx = 1;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets = new Insets(2, 10, 2, 0);
@@ -254,6 +256,7 @@ public class ProjectionSelectionPanel extends JPanel {
 
         setLabelSizes(lon0Label);
         constraints.fill = GridBagConstraints.NONE;
+        constraints.weightx = 0;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridx = 2;
         infoPanel.add(lon0Label, constraints);
@@ -263,6 +266,7 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.gridy = 2;
 
         constraints.gridx = 0;
+        constraints.weightx = 0;
         infoPanel.add(latitudeLeadLabel, constraints);
 
         setValues(lat0Slider, 180, -180, 0);
@@ -273,6 +277,7 @@ public class ProjectionSelectionPanel extends JPanel {
             }
         });
         constraints.gridx = 1;
+        constraints.weightx = 1;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets = new Insets(2, 10, 2, 0);
@@ -280,6 +285,7 @@ public class ProjectionSelectionPanel extends JPanel {
 
         setLabelSizes(lat0Label);
         constraints.fill = GridBagConstraints.NONE;
+        constraints.weightx = 0;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridx = 2;
         infoPanel.add(lat0Label, constraints);
