@@ -168,7 +168,6 @@ public class ProjectionSelectionPanel extends JPanel {
         selectionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 10));
 
         projectionComboBox.setMaximumRowCount(40);
-        projectionComboBox.setModel(new DefaultComboBoxModel(new String[] { "Plate Carrée (Geographic)", "Cylindrical Equal-Area", "Cylindrical Conformal (Mercator)", "Conical Equidistant", "Conical Equal-Area (Albers)", "Conical Conformal (Lambert)", "Azimuthal Equidistant", "Azimuthal Equal-Area (Lambert)", "Azimuthal Conformal (Stereographic)", "Azimuthal Orthographic", "Sinusoidal", "Pseudoconical Equal-Area (Bonne)" }));
         projectionComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent evt) {
                 projectionComboBoxItemStateChanged(evt);
