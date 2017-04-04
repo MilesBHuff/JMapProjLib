@@ -160,6 +160,10 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
 
         setLayout(new BorderLayout(10, 10));
 
+        /*
+         * selection panel
+         */
+
         selectionPanel.setPreferredSize(new Dimension(100, 40));
         selectionPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 10));
 
@@ -201,8 +205,16 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
 
         add(selectionPanel, BorderLayout.NORTH);
 
+        /*
+         * map
+         */
+
         map.setPreferredSize(new Dimension(400, 300));
         add(map, BorderLayout.CENTER);
+
+        /*
+         * info panel
+         */
 
         infoPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(""), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
         infoPanel.setMinimumSize(new Dimension(400, 96));
@@ -210,6 +222,10 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
         infoPanel.setLayout(new GridBagLayout());
 
         GridBagConstraints constraints = new GridBagConstraints();
+
+        // description of the selected projection
+
+        constraints.gridy = 0;
 
         descriptionLeadLabel.setText("Description");
         constraints.anchor = GridBagConstraints.EAST;
@@ -226,9 +242,12 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
         infoPanel.add(descriptionLabel, constraints);
         constraints.gridwidth = 1;
 
+        // Longitude slider
+
+        constraints.gridy = 1;
+
         longitudeLeadLabel.setText("Longitude of Origin");
         constraints.gridx = 0;
-        constraints.gridy = 6;
         infoPanel.add(longitudeLeadLabel, constraints);
 
         lon0Slider.setMaximum(180);
@@ -242,7 +261,6 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
             }
         });
         constraints.gridx = 1;
-        constraints.gridy = 6;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets = new Insets(2, 10, 2, 0);
@@ -255,7 +273,6 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
         constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridx = 2;
-        constraints.gridy = 6;
         infoPanel.add(lon0Label, constraints);
 
         add(infoPanel, BorderLayout.SOUTH);
