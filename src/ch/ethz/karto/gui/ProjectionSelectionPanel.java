@@ -145,8 +145,6 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
      * This method is called from within the constructor to initialize the form.
      */
     private void initComponents() {
-        GridBagConstraints gridBagConstraints;
-
         selectionPanel = new JPanel();
         projectionComboBox = new JComboBox();
         previousProjectionButton = new JButton();
@@ -211,27 +209,27 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
         infoPanel.setPreferredSize(new Dimension(500, 200));
         infoPanel.setLayout(new GridBagLayout());
 
+        GridBagConstraints constraints = new GridBagConstraints();
+
         descriptionLeadLabel.setText("Description");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.anchor = GridBagConstraints.EAST;
-        infoPanel.add(descriptionLeadLabel, gridBagConstraints);
+        constraints.anchor = GridBagConstraints.EAST;
+        infoPanel.add(descriptionLeadLabel, constraints);
 
         descriptionLabel.setText("-");
         descriptionLabel.setMaximumSize(new Dimension(300, 16));
         descriptionLabel.setMinimumSize(new Dimension(300, 16));
         descriptionLabel.setPreferredSize(new Dimension(300, 16));
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = GridBagConstraints.WEST;
-        gridBagConstraints.insets = new Insets(2, 10, 2, 0);
-        infoPanel.add(descriptionLabel, gridBagConstraints);
+        constraints.gridwidth = 2;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets = new Insets(2, 10, 2, 0);
+        infoPanel.add(descriptionLabel, constraints);
+        constraints.gridwidth = 1;
 
         longitudeLeadLabel.setText("Longitude of Origin");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        infoPanel.add(longitudeLeadLabel, gridBagConstraints);
+        constraints.gridx = 0;
+        constraints.gridy = 6;
+        infoPanel.add(longitudeLeadLabel, constraints);
 
         lon0Slider.setMaximum(180);
         lon0Slider.setMinimum(-180);
@@ -243,22 +241,22 @@ public class ProjectionSelectionPanel extends javax.swing.JPanel {
                 lon0SliderStateChanged(evt);
             }
         });
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = GridBagConstraints.WEST;
-        gridBagConstraints.insets = new Insets(2, 10, 2, 0);
-        infoPanel.add(lon0Slider, gridBagConstraints);
+        constraints.gridx = 1;
+        constraints.gridy = 6;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets = new Insets(2, 10, 2, 0);
+        infoPanel.add(lon0Slider, constraints);
 
         lon0Label.setText("0");
         lon0Label.setMaximumSize(new Dimension(50, 16));
         lon0Label.setMinimumSize(new Dimension(50, 16));
         lon0Label.setPreferredSize(new Dimension(50, 16));
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
-        infoPanel.add(lon0Label, gridBagConstraints);
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.gridx = 2;
+        constraints.gridy = 6;
+        infoPanel.add(lon0Label, constraints);
 
         add(infoPanel, BorderLayout.SOUTH);
     }
