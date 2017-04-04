@@ -53,8 +53,10 @@ public class ProjectionSelectionPanel extends JPanel {
     private JLabel descriptionLabel = new JLabel();
     private JPanel infoPanel = new JPanel();
     private JCheckBox inverseCheckBox = new JCheckBox();
+    private JLabel longitudeLeadLabel = new JLabel("Longitude of Origin");
     private JLabel lon0Label = new JLabel("0");
     private JSlider lon0Slider = new JSlider();
+    private JLabel latitudeLeadLabel = new JLabel("Latitude of Origin");
     private JLabel lat0Label = new JLabel("0");
     private JSlider lat0Slider = new JSlider();
     private MapComponent map = new MapComponent();
@@ -234,7 +236,6 @@ public class ProjectionSelectionPanel extends JPanel {
 
         constraints.gridy = 1;
 
-        JLabel longitudeLeadLabel = new JLabel("Longitude of Origin");
         constraints.gridx = 0;
         infoPanel.add(longitudeLeadLabel, constraints);
 
@@ -261,7 +262,6 @@ public class ProjectionSelectionPanel extends JPanel {
 
         constraints.gridy = 2;
 
-        JLabel latitudeLeadLabel = new JLabel("Latitude of Origin");
         constraints.gridx = 0;
         infoPanel.add(latitudeLeadLabel, constraints);
 
