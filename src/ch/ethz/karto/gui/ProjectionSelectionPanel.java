@@ -42,7 +42,7 @@ import com.jhlabs.map.proj.ProjectionFactory;
  *
  * @author Bernhard Jenny, Institute of Cartography, ETH Zurich.
  */
-public class ProjectionSelectionPanel extends javax.swing.JPanel {
+public class ProjectionSelectionPanel extends JPanel {
 
     /**
      * The lines that are displayed. Must be in geographic coordinates
