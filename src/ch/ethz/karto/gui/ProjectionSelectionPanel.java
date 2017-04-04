@@ -238,11 +238,8 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.gridx = 0;
         infoPanel.add(longitudeLeadLabel, constraints);
 
-        lon0Slider.setMaximum(180);
-        lon0Slider.setMinimum(-180);
-        lon0Slider.setValue(0);
-        lon0Slider.setMinimumSize(new Dimension(200, 29));
-        lon0Slider.setPreferredSize(new Dimension(200, 29));
+        setValues(lon0Slider, 180, -180, 0);
+        setSliderSizes(lon0Slider);
         lon0Slider.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent evt) {
                 lon0SliderStateChanged(evt);
@@ -254,9 +251,7 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.insets = new Insets(2, 10, 2, 0);
         infoPanel.add(lon0Slider, constraints);
 
-        lon0Label.setMaximumSize(new Dimension(50, 16));
-        lon0Label.setMinimumSize(new Dimension(50, 16));
-        lon0Label.setPreferredSize(new Dimension(50, 16));
+        setLabelSizes(lon0Label);
         constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridx = 2;
@@ -270,11 +265,8 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.gridx = 0;
         infoPanel.add(latitudeLeadLabel, constraints);
 
-        lat0Slider.setMaximum(180);
-        lat0Slider.setMinimum(-180);
-        lat0Slider.setValue(0);
-        lat0Slider.setMinimumSize(new Dimension(200, 29));
-        lat0Slider.setPreferredSize(new Dimension(200, 29));
+        setValues(lat0Slider, 180, -180, 0);
+        setSliderSizes(lat0Slider);
         lat0Slider.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent evt) {
                 lat0SliderStateChanged(evt);
@@ -286,15 +278,30 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.insets = new Insets(2, 10, 2, 0);
         infoPanel.add(lat0Slider, constraints);
 
-        lat0Label.setMaximumSize(new Dimension(50, 16));
-        lat0Label.setMinimumSize(new Dimension(50, 16));
-        lat0Label.setPreferredSize(new Dimension(50, 16));
+        setLabelSizes(lat0Label);
         constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridx = 2;
         infoPanel.add(lat0Label, constraints);
 
         add(infoPanel, BorderLayout.SOUTH);
+    }
+
+    private void setValues(JSlider slider, int max, int min, int value) {
+        slider.setMaximum(max);
+        slider.setMinimum(min);
+        slider.setValue(value);
+    }
+
+    private void setSliderSizes(JSlider slider) {
+        slider.setMinimumSize(new Dimension(200, 29));
+        slider.setPreferredSize(new Dimension(200, 29));
+    }
+
+    private void setLabelSizes(JLabel label) {
+        label.setMaximumSize(new Dimension(50, 16));
+        label.setMinimumSize(new Dimension(50, 16));
+        label.setPreferredSize(new Dimension(50, 16));
     }
 
     private void lon0SliderStateChanged(ChangeEvent evt) {
