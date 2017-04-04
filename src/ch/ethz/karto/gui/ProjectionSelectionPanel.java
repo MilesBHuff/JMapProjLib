@@ -55,6 +55,8 @@ public class ProjectionSelectionPanel extends JPanel {
     private JCheckBox inverseCheckBox;
     private JLabel lon0Label;
     private JSlider lon0Slider;
+    private JLabel lat0Label;
+    private JSlider lat0Slider;
     private MapComponent map;
     private JButton nextProjectionButton;
     private JButton previousProjectionButton;
@@ -83,6 +85,7 @@ public class ProjectionSelectionPanel extends JPanel {
             // and pass the projected lines to the map to display.
             if (projection != null) {
                 projection.setProjectionLongitudeDegrees(lon0Slider.getValue());
+                projection.setProjectionLatitudeDegrees(lat0Slider.getValue());
                 projection.setEllipsoid(Ellipsoid.SPHERE);
                 projection.initialize();
 
@@ -155,8 +158,11 @@ public class ProjectionSelectionPanel extends JPanel {
         JLabel descriptionLeadLabel = new JLabel();
         descriptionLabel = new JLabel();
         JLabel longitudeLeadLabel = new JLabel();
+        JLabel latitudeLeadLabel = new JLabel();
         lon0Slider = new JSlider();
         lon0Label = new JLabel();
+        lat0Slider = new JSlider();
+        lat0Label = new JLabel();
 
         setLayout(new BorderLayout(10, 10));
 
@@ -274,12 +280,53 @@ public class ProjectionSelectionPanel extends JPanel {
         constraints.gridx = 2;
         infoPanel.add(lon0Label, constraints);
 
+        // Latitude slider
+
+        constraints.gridy = 2;
+
+        latitudeLeadLabel.setText("Latitude of Origin");
+        constraints.gridx = 0;
+        infoPanel.add(latitudeLeadLabel, constraints);
+
+        lat0Slider.setMaximum(180);
+        lat0Slider.setMinimum(-180);
+        lat0Slider.setValue(0);
+        lat0Slider.setMinimumSize(new Dimension(200, 29));
+        lat0Slider.setPreferredSize(new Dimension(200, 29));
+        lat0Slider.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent evt) {
+                lat0SliderStateChanged(evt);
+            }
+        });
+        constraints.gridx = 1;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets = new Insets(2, 10, 2, 0);
+        infoPanel.add(lat0Slider, constraints);
+
+        lat0Label.setText("0");
+        lat0Label.setMaximumSize(new Dimension(50, 16));
+        lat0Label.setMinimumSize(new Dimension(50, 16));
+        lat0Label.setPreferredSize(new Dimension(50, 16));
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.gridx = 2;
+        infoPanel.add(lat0Label, constraints);
+
         add(infoPanel, BorderLayout.SOUTH);
     }
 
     private void lon0SliderStateChanged(ChangeEvent evt) {
         JSlider slider = (JSlider) evt.getSource();
         lon0Label.setText(Integer.toString(slider.getValue()));
+        //if (!slider.getValueIsAdjusting()) {
+        project();
+        //}
+    }
+
+    private void lat0SliderStateChanged(ChangeEvent evt) {
+        JSlider slider = (JSlider) evt.getSource();
+        lat0Label.setText(Integer.toString(slider.getValue()));
         //if (!slider.getValueIsAdjusting()) {
         project();
         //}
