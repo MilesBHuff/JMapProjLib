@@ -58,7 +58,7 @@ public class MapLine {
     
     /**
      * Add a point at the end of the line.
-     * @mapPoint The point to add.
+     * @param mapPoint The point to add.
      */
     public void addPoint(MapPoint mapPoint) {
         if (Double.isNaN(mapPoint.x) || Double.isNaN(mapPoint.y)) {

@@ -356,9 +356,6 @@ public class LineProjector {
 
     /**
      * Projects a vector of lines.
-     *
-     * @param lines The lines to project.
-     * @return A vector with the projected lines.
      */
     public void projectLines(ArrayList<MapLine> src, ArrayList<MapLine> dst, Projection projection) {
 
